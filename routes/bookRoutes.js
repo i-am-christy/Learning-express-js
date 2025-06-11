@@ -15,6 +15,9 @@ router.post("/", controller.createBook)
 //get a book by id
 router.get("/:id", controller.getBookById)
 
+//get books by author
+//router.get("/author", controller.getBookByAuthor)
+
 //update the book by id
 router.patch("/:id", controller.updateBook)
 

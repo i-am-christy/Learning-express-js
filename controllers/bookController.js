@@ -5,9 +5,31 @@ const getBooks = (req, res) => {
     const response ={
         success: true,
         message: "Books Retrieved!",
-        data: {books}
+        data: {books: books}
     }
     res.send(response)
+}
+
+//create a function to get books by authurs
+const getBookByAuthor = (req, res) => {
+    console.log(req.query); //log the query to see what is being passed
+     console.log(req.query); //log the query to see what is being passed
+    //get authur from teh query
+    const {author} = req.query;;
+    let filteredBooks; //initialize filteredBooks
+
+    if(author){
+        //filter books by author
+        filteredBooks = books.filter(bk => bk.author === author)
+    }else{
+        filteredBooks = books;
+    }
+    const response ={
+        success: true,
+        message: "Books Retrieved!",
+        data: {books: filteredBooks}
+    }
+    res.send(response) 
 }
 
 //function to create book
@@ -97,5 +119,6 @@ module.exports = {
     getBooks,
     createBook,
     getBookById,
-    updateBook
+    updateBook, 
+    getBookByAuthor
 }
